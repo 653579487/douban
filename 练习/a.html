@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="myapp" ng-controller="my_js">
+<head>
+	<title></title>
+</head>
+<body>
+<div id="div">{{a}}</div>
+
+
+<!-- <script src="jsonp3.js"></script>
+<script type="text/javascript">
+	$$jsonp('https://api.douban.com/v2/movie/in_theaters',{
+	start:0,
+	count:10
+},function  (data) {
+	document.getElementById("div").innerHTML=data.subjects[0].title
+	console.log(data)
+}
+       )
+</script> -->
+<script src="../node_modules/angular/angular.js"></script>
+<script src="../in_theaters/http.js"></script>
+<script>
+console.log(1)
+	var ss = angular.module('myapp', ['sevice']);
+	console.log(ss)
+	ss.controller('my_js', ['$scope','httpService', function(){
+		$scope.a = 'scope'
+		httpService.jsonp('https://api.douban.com/v2/movie/in_theaters',{
+			start:0,
+			count:10
+		},function(data){
+		console.log(data)
+		})
+	}])
+
+
+</script>
+</body>
+</html>
+
