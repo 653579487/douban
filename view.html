@@ -1,0 +1,39 @@
+<h2 class=" page-header">{{data.title}}</h2>
+    <h1>{{error}}</h1>
+<div class="list-group" ng-repeat="items in data.subjects">
+    <a href="{{items.alt}}" class="list-group-item">
+        <div class="media">
+            <div class="media-left">
+                    <img class="media-object" ng-src ="{{items.images.small}}" alt="...">
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading"><strong>{{items.title}}</strong></h4>
+                <p>类型：{{items.genres.join('、')}}</p>
+               <p>导演：<span ng-repeat="d in items.directors">{{d.name}}<i ng-if="!$last">、</i></span></p>
+               <p>主演：<span ng-repeat="z in items.casts">{{z.name}}<b ng-if="!$last">、</b></span></p>
+           </div>              
+        </div>
+    </a>
+</div>
+ <nav aria-label="...">
+  <ul class="pager">
+    <li ng-class="{disabled:page<=1?true:false}"><a ng-click="goPage(page-1)">上一页</a></li>
+    <li ng-class="{disabled:page>=zongyeshu?true:false}"><a ng-click="goPage(page+1)">下一页</a></li>
+  </ul>
+</nav>
+
+<p>
+<span>共{{data.total}}条</span>
+<span>{{page}}/{{zongyeshu}}页</span>
+</p>
+<!-- css3 loading -->
+<div class="mask"  ng-if="!(data.subjects.length>1)">
+
+  <div class="spinner">
+  <div class="cube1"></div>
+  <div class="cube2"></div>
+</div>
+
+</div>
+
+<p>{{ac}}</p>
